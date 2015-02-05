@@ -1,0 +1,30 @@
+﻿<Window x:Class="Wallpaper_viewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Wallpaper viewer" Height="716" Width="1219">
+    <Grid>
+        <TextBox x:Name="SearchBox" HorizontalAlignment="Left" Height="23" Margin="138,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Foreground="Gray" GotKeyboardFocus="SearchBox_OnGotKeyboardFocus" LostKeyboardFocus="SearchBox_OnLostKeyboardFocus"/>
+        <TextBox x:Name="FolderDirectoryBox" HorizontalAlignment="Left" Height="23" Margin="138,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Foreground="Gray" GotKeyboardFocus="FolderDirectoryBox_OnGotKeyboardFocus" LostKeyboardFocus="FolderDirectoryBox_OnLostKeyboardFocus" />
+        <Button x:Name="SearchButton" Content="GIMME WALLPAPERS" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="130.257" Click="SearchButton_Click"/>
+        <Label Content="Wallpaper Directory:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Character name:" HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top"/>
+
+        <Expander Header="Advanced search options" HorizontalAlignment="Left" Margin="10,271,0,0" VerticalAlignment="Top" Height="170" Width="334">
+            <Grid >
+                <Label Content="Resolution:" HorizontalAlignment="Left" Margin="0,6,0,-32" VerticalAlignment="Top"/>
+                <Label Content="Allow:" HorizontalAlignment="Left" Margin="0,28,0,0" VerticalAlignment="Top"/>
+                <CheckBox x:Name="GroupCheckBox" Content="Group" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" MouseUp="GroupCheckBox_MouseUp" />
+                <CheckBox x:Name="ResolutionSearchCheckBox" Content="Resolution search" HorizontalAlignment="Left" Margin="215,12,0,0" VerticalAlignment="Top" MouseUp="ResolutionSearchCheckBox_MouseUp"/>
+                <CheckBox x:Name="VectorCheckBox" Content="Vector" HorizontalAlignment="Left" Margin="111,61,0,0" VerticalAlignment="Top" MouseUp="VectorCheckBox_MouseUp"/>
+                <ComboBox x:Name="ResolutionBox" HorizontalAlignment="Left" Margin="74,10,0,0" VerticalAlignment="Top" Width="120"/>
+            </Grid>
+        </Expander>
+        <WrapPanel x:Name="ImagePanel" HorizontalAlignment="Left" Height="666" Margin="447,10,0,0" VerticalAlignment="Top" Width="754">
+        </WrapPanel>
+        <Button Content="Load Gallery" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="75" Click="LoadGalleryButton_Click"/>
+        <TextBlock x:Name="FolderCount" HorizontalAlignment="Left" Margin="10,162,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="ItemCount" HorizontalAlignment="Left" Margin="10,183,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="FileMatchBlock" HorizontalAlignment="Left" Margin="10,204,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <Button x:Name="FolderButton" Content="..." HorizontalAlignment="Left" Margin="329,14,0,0" VerticalAlignment="Top" Width="24" Click="FolderButton_Click"/>
+    </Grid>
+</Window>

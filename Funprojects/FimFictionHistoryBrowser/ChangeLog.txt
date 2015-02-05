@@ -1,0 +1,14 @@
+﻿Changelog for FimReader
+Copyright© Sebastian "Todtaure" Breuer
+
+Version:
+
+0.1.0.0 - Initial View/Viewmodel and Database
+0.2.0.0 - Entity Model added to projekt, CRUD methods added to Model
+0.3.0.0 - Viewing story properties and adding new stories implemented
+0.4.0.0 - Delete/Clear methods implemented
+0.5.0.0 - Added story source property to database and viewmodel
+0.5.0.2 - Fixed comboboxes when viewing stories
+0.6.0.0 - Update method implemented
+0.6.0.1 - Added try/catch for saving database context
+0.7.1.0 - Added about info box, BETA version ready (pending changes to sql database)

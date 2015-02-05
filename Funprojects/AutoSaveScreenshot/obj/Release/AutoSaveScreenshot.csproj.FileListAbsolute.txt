@@ -1,0 +1,5 @@
+D:\Files\Dropbox\Visual Studio\Personal\Funprojects\AutoSaveScreenshot\bin\Release\AutoSaveScreenshot.exe.config
+D:\Files\Dropbox\Visual Studio\Personal\Funprojects\AutoSaveScreenshot\bin\Release\AutoSaveScreenshot.exe
+D:\Files\Dropbox\Visual Studio\Personal\Funprojects\AutoSaveScreenshot\bin\Release\AutoSaveScreenshot.pdb
+D:\Files\Dropbox\Visual Studio\Personal\Funprojects\AutoSaveScreenshot\obj\Release\AutoSaveScreenshot.exe
+D:\Files\Dropbox\Visual Studio\Personal\Funprojects\AutoSaveScreenshot\obj\Release\AutoSaveScreenshot.pdb

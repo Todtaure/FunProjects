@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FimFictionDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Stories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StoryNo" Type="int" Nullable="false" />
+    <Property Name="Progress" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="WordCount" Type="int" Nullable="false" />
+    <Property Name="ChapterCount" Type="int" Nullable="false" />
+    <Property Name="Tags" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Audience" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sequels" Type="nvarchar(max)" />
+    <Property Name="Author" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Rating" Type="int" Nullable="false" />
+    <Property Name="DownloadStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Series" Type="nvarchar(max)" />
+    <Property Name="Notes" Type="nvarchar(max)" />
+    <Property Name="StoryLink" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="FimFictionDatabaseModelStoreContainer">
+    <EntitySet Name="Stories" EntityType="Self.Stories" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

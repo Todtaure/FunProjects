@@ -1,0 +1,86 @@
+﻿<Window x:Class="FimFictionHistoryBrowser.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FiMReader" Height="673" Width="1309" SizeToContent="WidthAndHeight"
+        Name="FimReader">
+    <Grid DataContext="{Binding DataReader, Source={StaticResource Locator}}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="81*"/>
+            <ColumnDefinition Width="136*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ListView Grid.Row="1" HorizontalAlignment="Right" Height="auto" Margin="0,10,10,0" VerticalAlignment="Top" Width="auto" ItemsSource="{Binding Stories}" 
+                  SelectedItem="{Binding SelectedStory}" Grid.Column="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Progress" DisplayMemberBinding="{Binding Progress}"></GridViewColumn>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="WordCount" DisplayMemberBinding="{Binding WordCount}"/>
+                    <GridViewColumn Header="Tags" DisplayMemberBinding="{Binding Tags}"/>
+                    <GridViewColumn Header="Audience" DisplayMemberBinding="{Binding Audience}"/>
+                    <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}"/>
+                    <GridViewColumn Header="Rating" DisplayMemberBinding="{Binding Rating}"/>
+                    <GridViewColumn Header="DownloadStatus" DisplayMemberBinding="{Binding DownloadStatus}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button TabIndex="15" Content="..." HorizontalAlignment="Left" Margin="436,463,0,0" VerticalAlignment="Top" Width="27" Command="{Binding BrowseCommand}" Grid.Row="1"/>
+        <Button TabIndex="16" Content="Add Story" HorizontalAlignment="Left" Margin="30,491,0,0" VerticalAlignment="Top" Width="89" Height="30" Command="{Binding AddStoryCommand}" Grid.Row="1"/>
+        <Button TabIndex="17" Content="Update Story" HorizontalAlignment="Left" Margin="133,491,0,0" VerticalAlignment="Top" Width="89" Height="30" Command="{Binding UpdateStoryCommand}" Grid.Row="1"/>
+        <Button TabIndex="18" Content="Clear" HorizontalAlignment="Left" Margin="239,491,0,0" VerticalAlignment="Top" Width="89" Height="30" Command="{Binding ClearFormCommand}" Grid.Row="1"/>
+        <Button TabIndex="19" Content="Reload" HorizontalAlignment="Left" Margin="342,491,0,0" VerticalAlignment="Top" Width="89" Height="30" Grid.Row="1"/>
+        <Button TabIndex="20" Content="Remove" HorizontalAlignment="Left" Margin="30,537,0,5" VerticalAlignment="Top" Width="89" Height="30" Command="{Binding RemoveStoryCommand}" Grid.Row="1"/>
+
+        <TextBox TabIndex="0" HorizontalAlignment="Left" Height="23" Margin="31,28,0,0" TextWrapping="Wrap" Text="{Binding NewStory.Name}" VerticalAlignment="Top" Width="413" Grid.Row="1"/>
+        <TextBox TabIndex="1" HorizontalAlignment="Left" Height="23" Margin="31,79,0,0" TextWrapping="Wrap" Text="{Binding NewStory.WordCount}" VerticalAlignment="Top" Width="89" Grid.Row="1"/>
+        <TextBox TabIndex="2" HorizontalAlignment="Left" Height="23" Margin="134,79,0,0" TextWrapping="Wrap" Text="{Binding NewStory.ChapterCount}" VerticalAlignment="Top" Width="51" Grid.Row="1"/>
+        <TextBox TabIndex="3" HorizontalAlignment="Left" Height="23" Margin="202,79,0,0" TextWrapping="Wrap" Text="{Binding NewStory.Tags}" VerticalAlignment="Top" Width="247" Grid.Row="1"/>
+        <TextBox TabIndex="4" HorizontalAlignment="Left" Height="23" Margin="31,136,0,0" TextWrapping="Wrap" Text="{Binding NewStory.Author}" VerticalAlignment="Top" Width="144" Grid.Row="1"/>
+        <TextBox TabIndex="5" HorizontalAlignment="Left" Height="23" Margin="185,136,0,0" TextWrapping="Wrap" Text="{Binding NewStory.Sequels}" VerticalAlignment="Top" Width="264" Grid.Row="1"/>
+        <TextBox TabIndex="6" HorizontalAlignment="Left" Height="23" Margin="31,196,0,0" TextWrapping="Wrap" Text="{Binding NewStory.Series}" VerticalAlignment="Top" Width="182" Grid.Row="1"/>
+        <TextBox TabIndex="7" HorizontalAlignment="Left" Height="44" Margin="31,253,0,0" TextWrapping="Wrap" Text="{Binding NewStory.Notes}" VerticalAlignment="Top" Width="298" Grid.Row="1"/>
+        <TextBox TabIndex="8" HorizontalAlignment="Left" Height="44" Margin="30,383,0,0" TextWrapping="Wrap" Text="{Binding NewStory.StoryLink}" VerticalAlignment="Top" Width="446" Grid.Row="1"/>
+        <TextBox TabIndex="9" HorizontalAlignment="Left" Height="23" Margin="30,463,0,0" TextWrapping="Wrap" Text="{Binding NewStory.StorageEPUB}" VerticalAlignment="Top" Width="401" Grid.Row="1"/>
+
+        <ComboBox TabIndex="10" Name="AudienceComboBox" HorizontalAlignment="Left" Margin="218,195,0,0" VerticalAlignment="Top" Width="120" 
+                  ItemsSource="{Binding AudienceComboCollection}" IsSynchronizedWithCurrentItem="True" Grid.Row="1"/>
+        <ComboBox TabIndex="11" Name="StatusComboBox" HorizontalAlignment="Left" Margin="343,195,0,0" VerticalAlignment="Top" Width="120" 
+                  ItemsSource="{Binding StatusComboCollection}" IsSynchronizedWithCurrentItem="True" Grid.Row="1"/>
+        <ComboBox TabIndex="12" Name="ProgressComboBox" HorizontalAlignment="Left" Margin="30,328,0,0" VerticalAlignment="Top" Width="120" 
+                  ItemsSource="{Binding ProgressComboBoxCollection}" IsSynchronizedWithCurrentItem="True" Grid.Row="1"/>
+        <ComboBox TabIndex="13" Name="DownloadComboBox" HorizontalAlignment="Left" Margin="155,328,0,0" VerticalAlignment="Top" Width="120" 
+                  SelectedIndex="1" ItemsSource="{Binding DownloadComboCollection}" IsSynchronizedWithCurrentItem="True" Grid.Row="1"/>
+        <ComboBox TabIndex="14" Name="RatingComboBox" HorizontalAlignment="Left" Margin="280,328,0,0" VerticalAlignment="Top" Width="120" 
+                  SelectedIndex="0" ItemsSource="{Binding RatingComboCollection}" IsSynchronizedWithCurrentItem="True" Grid.Row="1"/>
+
+        <Label Content="Progress" HorizontalAlignment="Left" Margin="30,302,0,0" VerticalAlignment="Top" Width="55" Grid.Row="1"/>
+        <Label Content="Download Status" HorizontalAlignment="Left" Margin="157,302,0,0" VerticalAlignment="Top" Width="101" Grid.Row="1"/>
+        <Label Content="Notes" HorizontalAlignment="Left" Margin="31,227,0,0" VerticalAlignment="Top" Width="55" Grid.Row="1"/>
+        <Label Content="Series" HorizontalAlignment="Left" Margin="31,170,0,0" VerticalAlignment="Top" Width="55" Grid.Row="1"/>
+        <Label Content="Audience" HorizontalAlignment="Left" Margin="221,170,0,0" VerticalAlignment="Top" Width="68" Grid.Row="1"/>
+        <Label Content="Status" HorizontalAlignment="Left" Margin="343,169,0,0" VerticalAlignment="Top" Width="55" Grid.Row="1"/>
+        <Label Content="Author" HorizontalAlignment="Left" Margin="31,110,0,0" VerticalAlignment="Top" Width="55" Grid.Row="1"/>
+        <Label Content="Sequels" HorizontalAlignment="Left" Margin="185,110,0,0" VerticalAlignment="Top" Width="55" Grid.Row="1"/>
+        <Label Content="Wordcount" HorizontalAlignment="Left" Margin="31,53,0,0" VerticalAlignment="Top" Width="72" Grid.Row="1"/>
+        <Label Content="Tags" HorizontalAlignment="Left" Margin="204,53,0,0" VerticalAlignment="Top" Width="55" Grid.Row="1"/>
+        <Label Content="Chapter#" HorizontalAlignment="Left" Margin="134,53,0,0" VerticalAlignment="Top" Width="63" Grid.Row="1"/>
+        <Label Content="Titel" HorizontalAlignment="Left" Margin="31,2,0,0" VerticalAlignment="Top" Width="55" Grid.Row="1"/>
+        <Label Content="Link" HorizontalAlignment="Left" Margin="30,357,0,0" VerticalAlignment="Top" Width="55" Grid.Row="1"/>
+        <Label Content="Rating" HorizontalAlignment="Left" Margin="282,302,0,0" VerticalAlignment="Top" Width="101" Grid.Row="1"/>
+        <Label Content="EPUB file" HorizontalAlignment="Left" Margin="31,437,0,0" VerticalAlignment="Top" Width="89" Grid.Row="1"/>
+
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Grid.ColumnSpan="2">
+            <TextBlock Name="VersionBlock" HorizontalAlignment="Center" Padding="2" TextAlignment="Center" FontSize="10" FontStyle="Italic" TextWrapping="Wrap" Text="{Binding Version}" VerticalAlignment="Bottom"/>
+        </StackPanel>
+        <Menu Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="47">
+            <MenuItem Command="{Binding AboutCommand}" Header="About" Height="20" Margin="0" Width="52"/>
+        </Menu>
+
+
+    </Grid>
+</Window>

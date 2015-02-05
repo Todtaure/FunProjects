@@ -1,0 +1,9 @@
+D:\Files\Dropbox\Visual Studio\Personal\Funprojects\FileRenamer\bin\Release\FileRenamer.exe.config
+D:\Files\Dropbox\Visual Studio\Personal\Funprojects\FileRenamer\obj\Release\FileRenamer.exe
+D:\Files\Dropbox\Visual Studio\Personal\Funprojects\FileRenamer\obj\Release\FileRenamer.pdb
+C:\Users\Chronos\Dropbox\Visual Studio\Personal\Funprojects\FileRenamer\bin\Release\FileRenamer.exe.config
+C:\Users\Chronos\Dropbox\Visual Studio\Personal\Funprojects\FileRenamer\obj\Release\FileRenamer.exe
+C:\Users\Chronos\Dropbox\Visual Studio\Personal\Funprojects\FileRenamer\obj\Release\FileRenamer.pdb
+C:\Users\Chronos\Source\Repos\FunProjects\Funprojects\FileRenamer\bin\Release\FileRenamer.exe.config
+C:\Users\Chronos\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.exe
+C:\Users\Chronos\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.pdb
