@@ -7,3 +7,16 @@ C:\Users\Chronos\Dropbox\Visual Studio\Personal\Funprojects\FileRenamer\obj\Rele
 C:\Users\Chronos\Source\Repos\FunProjects\Funprojects\FileRenamer\bin\Release\FileRenamer.exe.config
 C:\Users\Chronos\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.exe
 C:\Users\Chronos\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.pdb
+C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\bin\Release\FileRenamer.exe.config
+C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\bin\Release\FileRenamer.exe
+C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\bin\Release\FileRenamer.pdb
+C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.csprojResolveAssemblyReference.cache
+C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Release\MainWindow.baml
+C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Release\MainWindow.g.cs
+C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Release\App.g.cs
+C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer_MarkupCompile.cache
+C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.g.resources
+C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.Properties.Resources.resources
+C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.csproj.GenerateResource.Cache
+C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.exe
+C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.pdb

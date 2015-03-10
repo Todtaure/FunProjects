@@ -1,0 +1,5 @@
+BUG LIST 
+FILE RENAMER
+
+-Test method
+	Original string randomized, but output still element[0]
