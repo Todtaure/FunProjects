@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Media;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace FileRenamer
 {
@@ -11,11 +13,13 @@ namespace FileRenamer
     {
         private bool _isPathValid;
         private string _folderURL;
+        private ProgressBar pgb;
 
-        public FileController()
+        public FileController(ProgressBar pgb)
         {
             _folderURL = null;
             _isPathValid = false;
+            this.pgb = pgb;
         }
 
         public bool CheckFilePath(string path)
@@ -43,13 +47,26 @@ namespace FileRenamer
             var musicFiles = from fullMusicFiles in Directory.EnumerateFiles(_folderURL, "*.mp3", SearchOption.TopDirectoryOnly)
                              select Path.GetFileName(fullMusicFiles);
             var enumerable = musicFiles as IList<string> ?? musicFiles.ToList();
+
             var cnt = enumerable.Count();
+            
+            pgb.Dispatcher.Invoke(DispatcherPriority.Send, new Action(delegate()
+            {
+                pgb.Value = 0;
+                pgb.Maximum = cnt;
+            }));
+
             for (int i = 0; i < cnt; i++)
             {
                 var newFileName = enumerable.ElementAt(i).Replace(removeValue, replaceValue);
                 var newPath = _folderURL + "\\" + newFileName;
                 var paths = fullPaths as IList<string> ?? fullPaths1.ToList();
                 File.Move(paths.ElementAt(i), newPath);
+
+                pgb.Dispatcher.Invoke(DispatcherPriority.Send, new Action(delegate()
+                {
+                    pgb.Value = i;
+                }));
             }
         }
 
@@ -75,6 +92,13 @@ namespace FileRenamer
                              select Path.GetFileName(fullMusicFiles);
             var enumerable = musicFiles as IList<string> ?? musicFiles.ToList();
             var cnt = enumerable.Count();
+
+            pgb.Dispatcher.Invoke(DispatcherPriority.Send, new Action(delegate()
+            {
+                pgb.Value = 0;
+                pgb.Maximum = cnt;
+            }));
+
             for (int i = 0; i < cnt; i++)
             {
                 var newFileName = enumerable[i].Remove(start, end);
@@ -92,6 +116,11 @@ namespace FileRenamer
                     File.Delete(enumerable[i]);
                     errors++;
                 }
+
+                pgb.Dispatcher.Invoke(DispatcherPriority.Send, new Action(delegate()
+                {
+                    pgb.Value = i;
+                }));
             }
             SystemSounds.Beep.Play();
 
@@ -117,6 +146,13 @@ namespace FileRenamer
                              select Path.GetFileName(fullMusicFiles);
             var enumerable = musicFiles as IList<string> ?? musicFiles.ToList();
             var cnt = enumerable.Count();
+
+            pgb.Dispatcher.Invoke(DispatcherPriority.Send, new Action(delegate()
+            {
+                pgb.Value = 0;
+                pgb.Maximum = cnt;
+            }));
+
             for (int i = 0; i < cnt; i++)
             {
                 var newFileName = enumerable.ElementAt(i).Capitalize();
@@ -132,6 +168,11 @@ namespace FileRenamer
                     File.Delete(enumerable[i]);
                             errors++;
                 }
+
+                pgb.Dispatcher.Invoke(DispatcherPriority.Send, new Action(delegate()
+                {
+                    pgb.Value = i;
+                }));
             }
             if (errors > 0)
             {

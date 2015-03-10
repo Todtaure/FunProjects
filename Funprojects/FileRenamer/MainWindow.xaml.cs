@@ -3,6 +3,8 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media;
 using System.ComponentModel;
+using System.Threading;
+using System.Windows.Threading;
 
 namespace FileRenamer
 {
@@ -19,9 +21,9 @@ namespace FileRenamer
             InitializeComponent();
             _isPathSet = false;
             SourceBox.Foreground = Brushes.Red;
-            Version.Text = "Version 1.6.0.0";
+            Version.Text = "Version 1.6.1.0";
 
-            _fileController = new FileController();
+            _fileController = new FileController(ProgressBar);
             
             var bgWorker = new BackgroundWorker();
             bgWorker.DoWork +=
@@ -42,7 +44,9 @@ namespace FileRenamer
             var bgWorker = new BackgroundWorker();
             if (ReplaceRadioButton.IsChecked == true && !String.IsNullOrEmpty(DeleteBox.Text))
             {
-                bgWorker.DoWork += (o, args) => _fileController.ReplaceStrings(DeleteBox.Text, ReplaceBox.Text);
+                var delete = DeleteBox.Text;
+                var replace = ReplaceBox.Text;
+                bgWorker.DoWork += (o, args) => _fileController.ReplaceStrings(delete, replace);
                 bgWorker.RunWorkerAsync();
             }
             else if (CharRadioButton.IsChecked == true && Int32.TryParse(EndChar.Text, out end) && Int32.TryParse(StartChar.Text, out start))
@@ -128,6 +132,29 @@ namespace FileRenamer
             bgWorker.DoWork += (o, args) => _fileController.CapitalizeAll();
             bgWorker.RunWorkerAsync();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ProgressBar.Value = 0;
+            var bgWorker = new BackgroundWorker();
+            bgWorker.DoWork += (o, args) =>
+            {
+                var value = 0;
+                while (value++ <= 1000)
+                {
+                    ProgressBar.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate()
+                    {
+                        ProgressBar.Value = value;
+                    }));
+                    Thread.Sleep(50);
+                }
+            };
+            bgWorker.RunWorkerAsync();
+            
+        }
+
+        private delegate void UpdateProgressBarDelegate(
+        System.Windows.DependencyProperty dp, Object value);
 
     }
 }
