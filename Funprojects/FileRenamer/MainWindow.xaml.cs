@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Windows.Media;
 using System.ComponentModel;
 using System.Threading;
+using System.Windows.Navigation;
 using System.Windows.Threading;
 
 namespace FileRenamer
@@ -21,16 +22,18 @@ namespace FileRenamer
             InitializeComponent();
             _isPathSet = false;
             SourceBox.Foreground = Brushes.Red;
-            Version.Text = "Version 1.6.1.0";
+            Version.Text = "Version 1.7.0.0";
 
             _fileController = new FileController(ProgressBar);
-            
+
+#if DEBUG
             var bgWorker = new BackgroundWorker();
             bgWorker.DoWork +=
                 (sender, args) =>
                     System.Windows.MessageBox.Show("This version may contain bugs!", "File renamer says...",
                         MessageBoxButton.OK, MessageBoxImage.Exclamation);
             bgWorker.RunWorkerAsync();
+#endif
         }
 
         /// <summary>
@@ -51,7 +54,8 @@ namespace FileRenamer
             }
             else if (CharRadioButton.IsChecked == true && Int32.TryParse(EndChar.Text, out end) && Int32.TryParse(StartChar.Text, out start))
             {
-                bgWorker.DoWork += (o, args) => _fileController.InsertAndRemove(AddBox.Text, start, end);
+                var add = AddBox.Text;
+                bgWorker.DoWork += (o, args) => _fileController.InsertAndRemove(add, start, end);
                 bgWorker.RunWorkerAsync();
             }
             else
@@ -89,25 +93,27 @@ namespace FileRenamer
 
         private void TestRenameWorker()
         {
-            int start, end;
-            string testBlockOut = null, resultBlockOut = null;
-            if (ReplaceRadioButton.IsChecked == true && !String.IsNullOrEmpty(DeleteBox.Text))
-            {
-                resultBlockOut = _fileController.TestReplaceStrings(DeleteBox.Text, ReplaceBox.Text, out testBlockOut);
+            Dispatcher.Invoke((Action) (() => {
+                int start, end;
+                string testBlockOut = null, resultBlockOut = null;
+                if (ReplaceRadioButton.IsChecked == true && !String.IsNullOrEmpty(DeleteBox.Text))
+                {
+                    resultBlockOut = _fileController.TestReplaceStrings(DeleteBox.Text, ReplaceBox.Text, out testBlockOut);
 
-            }
-            else if (CharRadioButton.IsChecked == true && int.TryParse(EndChar.Text, out end) && int.TryParse(StartChar.Text, out start))
-            {
-                resultBlockOut = _fileController.TestInsertAndRemove(ReplaceBox.Text, start, end, out testBlockOut);
-            }
+                }
+                else if (CharRadioButton.IsChecked == true && int.TryParse(EndChar.Text, out end) && int.TryParse(StartChar.Text, out start))
+                {
+                    resultBlockOut = _fileController.TestInsertAndRemove(AddBox.Text, start, end, out testBlockOut);
+                }
 
-            if (testBlockOut == null || resultBlockOut == null)
-            {
-                return;
-            }
+                if (testBlockOut == null || resultBlockOut == null)
+                {
+                    return;
+                }
 
-            TestBlock.Text = testBlockOut;
-            ResultTestBlock.Text = resultBlockOut;
+                TestBlock.Text = testBlockOut;
+                ResultTestBlock.Text = resultBlockOut;
+            }));
         }
 
         private void CheckPathButton_OnClick(object sender, RoutedEventArgs e)
@@ -133,28 +139,16 @@ namespace FileRenamer
             bgWorker.RunWorkerAsync();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SetFileTypeBtn_Click(object sender, RoutedEventArgs e)
         {
-            ProgressBar.Value = 0;
-            var bgWorker = new BackgroundWorker();
-            bgWorker.DoWork += (o, args) =>
+            if (String.IsNullOrEmpty(FileTypeBox.Text))
             {
-                var value = 0;
-                while (value++ <= 1000)
-                {
-                    ProgressBar.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate()
-                    {
-                        ProgressBar.Value = value;
-                    }));
-                    Thread.Sleep(50);
-                }
-            };
-            bgWorker.RunWorkerAsync();
-            
+                return;
+            }
+            _fileController.SetFileType(FileTypeBox.Text);
         }
 
         private delegate void UpdateProgressBarDelegate(
         System.Windows.DependencyProperty dp, Object value);
-
     }
 }

@@ -20,3 +20,28 @@ C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Release\Fil
 C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.csproj.GenerateResource.Cache
 C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.exe
 C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.pdb
+W:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\bin\Release\FileRenamer.exe.config
+W:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.exe
+W:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.pdb
+W:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\bin\Release\FileRenamer.exe
+W:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\bin\Release\FileRenamer.pdb
+W:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.csprojResolveAssemblyReference.cache
+W:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Release\MainWindow.baml
+W:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Release\MainWindow.g.cs
+W:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Release\App.g.cs
+W:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer_MarkupCompile.cache
+W:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.g.resources
+W:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.Properties.Resources.resources
+W:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.csproj.GenerateResource.Cache
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\bin\Release\FileRenamer.exe.config
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.exe
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.pdb
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\bin\Release\FileRenamer.exe
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\bin\Release\FileRenamer.pdb
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Release\MainWindow.baml
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Release\MainWindow.g.cs
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Release\App.g.cs
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer_MarkupCompile.cache
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.g.resources
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.Properties.Resources.resources
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Release\FileRenamer.csproj.GenerateResource.Cache

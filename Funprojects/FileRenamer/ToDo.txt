@@ -1,0 +1,10 @@
+﻿BuFiR - Bunk File Renamer
+
+Upcoming features/Changes
+
+- Refactor methods in FileController (single file detection at start)
+- Better flow in UI between choosing folder and filetype
+- Refactor CodeBehind file
+
+v1.7.0.0
+- Possibility to change filetype

@@ -33,3 +33,16 @@ C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Debug\FileR
 C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\obj\Debug\FileRenamer.csproj.GenerateResource.Cache
 C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\bin\Debug\FileRenamer.exe
 C:\Users\Breuer\Source\Repos\FunProjects\Funprojects\FileRenamer\bin\Debug\FileRenamer.pdb
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\bin\Debug\FileRenamer.exe.config
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Debug\FileRenamer.exe
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Debug\FileRenamer.pdb
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\bin\Debug\FileRenamer.exe
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\bin\Debug\FileRenamer.pdb
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Debug\FileRenamer.csprojResolveAssemblyReference.cache
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Debug\MainWindow.baml
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Debug\MainWindow.g.cs
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Debug\App.g.cs
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Debug\FileRenamer_MarkupCompile.cache
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Debug\FileRenamer.g.resources
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Debug\FileRenamer.Properties.Resources.resources
+F:\Visual Studio\Git\FunProjects\Funprojects\FileRenamer\obj\Debug\FileRenamer.csproj.GenerateResource.Cache

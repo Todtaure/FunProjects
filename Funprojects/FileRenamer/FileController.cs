@@ -13,24 +13,31 @@ namespace FileRenamer
     {
         private bool _isPathValid;
         private string _folderURL;
+        private string _fileType;
         private ProgressBar pgb;
 
         public FileController(ProgressBar pgb)
         {
             _folderURL = null;
             _isPathValid = false;
+            _fileType = ".mp3";
             this.pgb = pgb;
         }
 
         public bool CheckFilePath(string path)
         {
             _isPathValid = false;
-            if (Directory.Exists(path) && Directory.EnumerateFiles(path, "*.mp3").Any())
+            if (Directory.Exists(path) && Directory.EnumerateFiles(path, "*" + _fileType).Any())
             {
                 _folderURL = path;
                 _isPathValid = true;
             }
             return _isPathValid;
+        }
+
+        public void SetFileType(string fileType)
+        {
+            _fileType = "."+fileType;
         }
 
         public void ReplaceStrings(string removeValue, string replaceValue)
@@ -41,10 +48,10 @@ namespace FileRenamer
                         MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return;
             }
-            var fullPaths = Directory.EnumerateFiles(_folderURL, "*.mp3");
+            var fullPaths = Directory.EnumerateFiles(_folderURL, "*" + _fileType);
 
             var fullPaths1 = fullPaths as IList<string> ?? fullPaths.ToList();
-            var musicFiles = from fullMusicFiles in Directory.EnumerateFiles(_folderURL, "*.mp3", SearchOption.TopDirectoryOnly)
+            var musicFiles = from fullMusicFiles in Directory.EnumerateFiles(_folderURL, "*" + _fileType, SearchOption.TopDirectoryOnly)
                              select Path.GetFileName(fullMusicFiles);
             var enumerable = musicFiles as IList<string> ?? musicFiles.ToList();
 
@@ -63,10 +70,7 @@ namespace FileRenamer
                 var paths = fullPaths as IList<string> ?? fullPaths1.ToList();
                 File.Move(paths.ElementAt(i), newPath);
 
-                pgb.Dispatcher.Invoke(DispatcherPriority.Send, new Action(delegate()
-                {
-                    pgb.Value = i;
-                }));
+                increaseProgress(i);
             }
         }
 
@@ -86,9 +90,9 @@ namespace FileRenamer
             }
 
             int errors = 0;
-            var fullPaths = Directory.EnumerateFiles(_folderURL, "*.mp3");
+            var fullPaths = Directory.EnumerateFiles(_folderURL, "*" + _fileType);
             var fullPaths1 = fullPaths as IList<string> ?? fullPaths.ToList();
-            var musicFiles = from fullMusicFiles in Directory.EnumerateFiles(_folderURL, "*.mp3", SearchOption.TopDirectoryOnly)
+            var musicFiles = from fullMusicFiles in Directory.EnumerateFiles(_folderURL, "*" + _fileType, SearchOption.TopDirectoryOnly)
                              select Path.GetFileName(fullMusicFiles);
             var enumerable = musicFiles as IList<string> ?? musicFiles.ToList();
             var cnt = enumerable.Count();
@@ -102,8 +106,8 @@ namespace FileRenamer
             for (int i = 0; i < cnt; i++)
             {
                 var newFileName = enumerable[i].Remove(start, end);
-                newFileName = newFileName.Remove(newFileName.Length - 4, 4);
-                newFileName += insertValue + ".mp3";
+                newFileName = newFileName.Remove(newFileName.Length - _fileType.Length, _fileType.Length);
+                newFileName += insertValue + _fileType;
 
                 try
                 {
@@ -117,10 +121,7 @@ namespace FileRenamer
                     errors++;
                 }
 
-                pgb.Dispatcher.Invoke(DispatcherPriority.Send, new Action(delegate()
-                {
-                    pgb.Value = i;
-                }));
+                increaseProgress(i);
             }
             SystemSounds.Beep.Play();
 
@@ -139,10 +140,10 @@ namespace FileRenamer
                 return;
             }
             int errors = 0;
-            var fullPaths = Directory.EnumerateFiles(_folderURL, "*.mp3");
+            var fullPaths = Directory.EnumerateFiles(_folderURL, "*" + _fileType);
 
             var fullPaths1 = fullPaths as IList<string> ?? fullPaths.ToList();
-            var musicFiles = from fullMusicFiles in Directory.EnumerateFiles(_folderURL, "*.mp3")
+            var musicFiles = from fullMusicFiles in Directory.EnumerateFiles(_folderURL, "*" + _fileType)
                              select Path.GetFileName(fullMusicFiles);
             var enumerable = musicFiles as IList<string> ?? musicFiles.ToList();
             var cnt = enumerable.Count();
@@ -169,10 +170,7 @@ namespace FileRenamer
                             errors++;
                 }
 
-                pgb.Dispatcher.Invoke(DispatcherPriority.Send, new Action(delegate()
-                {
-                    pgb.Value = i;
-                }));
+                increaseProgress(i);
             }
             if (errors > 0)
             {
@@ -192,14 +190,15 @@ namespace FileRenamer
                 return null;
             }
 
-            var musicFiles = from fullMusicFiles in Directory.EnumerateFiles(_folderURL, "*.mp3", SearchOption.TopDirectoryOnly)
+            var musicFiles = from fullMusicFiles in Directory.EnumerateFiles(_folderURL, "*" + _fileType, SearchOption.TopDirectoryOnly)
                              select Path.GetFileName(fullMusicFiles);
             var enumerable = musicFiles as IList<string> ?? musicFiles.ToList();
 
             Random rand = new Random();
-            oldName = enumerable.ElementAt(rand.Next(0, enumerable.Count - 1));
+            var randVal = rand.Next(0, enumerable.Count - 1);
+            oldName = enumerable.ElementAt(randVal);
 
-            var newFileName = enumerable.ElementAt(0).Replace(removeValue, replaceValue);
+            var newFileName = enumerable[randVal].Replace(removeValue, replaceValue);
 
             return newFileName;
         }
@@ -214,21 +213,30 @@ namespace FileRenamer
                 return null;
             }
 
-            var musicFiles = from fullMusicFiles in Directory.EnumerateFiles(_folderURL, "*.mp3", SearchOption.TopDirectoryOnly)
+            var musicFiles = from fullMusicFiles in Directory.EnumerateFiles(_folderURL, "*" + _fileType, SearchOption.TopDirectoryOnly)
                              select Path.GetFileName(fullMusicFiles);
             var enumerable = musicFiles as IList<string> ?? musicFiles.ToList();
 
             Random rand = new Random();
-            oldName = enumerable.ElementAt(rand.Next(0, enumerable.Count - 1));
+            var randVal = rand.Next(0, enumerable.Count - 1);
+            oldName = enumerable.ElementAt(randVal);
 
-            var newFileName = enumerable[0].Remove(start, end);
-            newFileName = newFileName.Remove(newFileName.Length - 4, 4);
+            var newFileName = enumerable[randVal].Remove(start, end);
+            newFileName = newFileName.Remove(newFileName.Length - _fileType.Length, _fileType.Length);
 
-            newFileName += insertValue + ".mp3";
+            newFileName += insertValue + _fileType;
             return newFileName;
         }
 
         #endregion
+
+        private void increaseProgress(int i)
+        {
+            pgb.Dispatcher.Invoke(DispatcherPriority.Send, new Action(delegate ()
+            {
+                pgb.Value = i + 1;
+            }));
+        }
     }
 
     public static class Extension
